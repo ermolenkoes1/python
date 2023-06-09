@@ -1,0 +1,410 @@
+Blok 1 - 1
+
+#Ввести произвольное число в консоле
+#Ввести пограничное число в консоле
+#Если 1-ое число меньше пограничного, вывести сообщение об этом.
+#Если 1-ое число больше пограничного, вывести сообщение об этом.
+#Если 1-ое число больше пограничного более, чем в 3 раза, сообщить об этом.
+
+
+print ("Введите произвольное число")
+a = int(input())
+print ("Введите пограничное число")
+b = int(input())
+if a < b:
+    print ("Ваше число меньше пограничного!")
+elif a == b:
+    print ("Вы угадали!")
+elif a < 0 and b < 0 and abs(b) < abs(a):
+    print ("Ваше число больше пограничного!")
+elif a == 0 and b > 0 :
+    print ("Ваше число меньше пограничного!")
+elif a > 0 and b == 0 :
+    print ("Ваше число значительно(более, чем в 3 раза) больше пограничного!")
+elif a >= 0 and b < 0:
+    print ("Ваше число значительно(более, чем в 3 раза) больше пограничного!")
+elif a >= b * 3:
+    print ("Ваше число значительно(более, чем в 3 раза) больше пограничного!")
+elif a > b < b * 3:
+    print ("Ваше число больше пограничного!")
+else:
+    print ("Вы угадали!")
+	
+------------------------	
+Blok 1 - 2
+
+#Ввести произвольную строку в консоль.
+#Циклом пройтись по всем символам этой строки.
+#Пропустить 3-й символ.
+#Если есть символ "c", вывести сообщение об этом.
+#Не выводить последний символ в строке.
+
+
+print ("Введите произвольное слово")
+a = str(input())
+x = 0; y = 0; d = 0
+print ("")
+for i in a:
+    x += 1
+    if x == 3:
+        continue
+    if i == 'c':
+        d = x
+        print ("Найдена буква с в", d, "символе!\n")
+print ("Результат поиска в слове:\n", a[:-1],"<-- последний символ не выведен требованию!\n")
+if len(a) == d:
+    print ("Скрытый последний символ так же являлся символом с\n")
+if d == 0:    
+    print ("Буква с не найдена \n", end='\n')
+
+x = 0;
+print ("Хотите отобразить результат поиска? \nДа - нажмите '1' / Нет - нажмите любую кнопку")
+b = str(input())
+print ("")
+if b == '1':
+    for i in a:
+        x += 1
+        if x == 3:
+            continue
+        if x == len(a): 
+            print ("проверка скрытого символа:")
+        print ("Сверяем символ с -->", i, "(", x,")") 
+print ("")
+
+
+------------------------	
+Blok 2 - 3
+
+#Написать мини калькулятор.
+#В консоле ожидается ввод того символа, операцию которую мы будем выполнять.
+#Операции: +, -, /, *, возведение в степень, модуль, рандомное число, факториал и арккосинус.
+#В консоль вводим столько значений, сколько требуется для операции. Для рандомного, например, 0.
+#Выводим значение.	
+
+
+import math
+import random
+
+g = 1
+while g != 0:
+    print ("Введите произвольное число")
+    a = float(input())
+
+    b = 0
+    while b != 1 and b != 2 and b != 3 and b != 4 and b != 5 and b != 6 and b != 7:
+        print ("\nВведите номер операции с числом\n")
+        print ("1. +\n2. -\n3. *\n4. /\n5. Возведение в степень\n6. Вычислить факториал\n7. Вычислить Арккосинус - значение должно быть задано в диапазоне от -1 до 1 \n")
+        b = int(input())
+        y = b
+        if b == 7:   
+            while a > 1 or a < -1:    
+                print ("\nДля вычисления арккосинуса введите число в диапазоне от -1 до 1") 
+                a = float(input())
+            continue
+    c = 0
+    if b != 6 and b!= 7:
+        while c != 1 and c != 2:
+            print ("\nВведите число: 1 - ваше число; 2 - рандомное число (1-100)")
+            c = int(input())
+    
+        
+    if c == 1:
+        print ("\nВведите произвольное число")
+        d = float(input())
+    if c == 2:
+        print ("\nРандомное число от 1 до 100")   
+        d = float(random.randint(1, 100))
+        print (d,"\n")
+
+    if b == 1:
+        e = a + d
+        print ("\n", a,'+',d,'=',e)
+
+    if b == 2:
+        e = a - d
+        print ("\n", a,'-',d,'=',e)
+
+    if b == 3:
+        e = a * d
+        print ("\n", a,'*',d,'=',e)
+
+    if b == 4:
+        e = a / d
+        print ("\n", a,'/',d,'=',e)
+
+    if b == 5:
+        e = a ** d
+        print ("\n", a,'^',d,'=',e)
+        
+    if b == 6:
+        x = a
+        fact = 1
+        while x > 1:
+            fact *= x
+            x -= 1        
+        print ("\nФакториал",a, "равен", fact)
+        
+    if b == 7:
+        x:float = a
+        print ("\nАрккосинус",a, "равен", (math.degrees(math.acos(x))),"градуса")
+
+    print ("\nХотите завершить?: 0 - Да; \nНачать сначала: любая клавиша + Enter\n")
+    g = int(input())
+    continue
+	
+	
+------------------------	
+Blok 2 - 4
+
+#Вводим 3 произвольных слова, например, название овощей.
+#Выводим все 3 слова в нижнем регистре, в верхнем регистре, потом только первый символ в верхнем (есть отдельная функция для этого).
+#Далее вводим количество каждого овоща.
+#С помощью метода format выводим все данные в читаемом виде.
+
+
+print ("Введите 3 произвольных слова")
+print ("Первое слово:")
+a1 = str(input())
+print ("\nВторое слово:")
+a2 = str(input())
+print ("\nТретье слово:")
+a3 = str(input())
+string = a1+' '+a2+' '+a3
+
+allwds = string.lower()
+print ("\nВывод слов в нижнем регистре:")
+print (allwds)
+allwds = string.upper()
+print ("\nВывод слов в Верхнем регистре:")
+print (allwds)
+allwds = string.title()
+print ("\nВыводим первый символ в верхнем регистре:")
+print (allwds)
+
+print ("\nВведите количество для:")
+print ("",a1, ":")
+b1 = int(input())
+print ("\n",a2, ":")
+b2 = int(input())
+print ("\n",a3, ":")
+b3 = int(input())
+print('Овощей всего: {0} - {3}шт.; {1} - {4}шт.; {2} - {5}шт.\n'.format(a1.title(), a2.title(), a3.title(), b1, b2, b3))	
+
+	
+------------------------	
+Blok 3 - 5
+
+#Вводим через запятую список слов. Формируем из этого списка множество..
+#Выводим на экран сколько слов в этом списке с просьбой сформировать 2-ой список с таким же количеством символов.
+#После этого делаем словарь из этих двух массивов, где 1-й - ключи, 2-ой - значения. 
+#Выводим этот словарь.
+
+
+first = input("Введите список слов через запятую: ").split(",")
+first_set = set(first)
+print("Количество слов:", len(first))
+second = input("Введите второй список с тем же количеством слов через запятую: ").split(",")
+dictionary = dict(zip(first, second))
+print(dictionary)
+
+------------------------	
+Blok 3 - 6a
+
+#Переделываем задачу номер 3(калькулятор)
+
+import math
+import random
+
+g = 1
+while g != 0:
+    print ("Введите произвольное число")
+    a = float(input())
+
+    b = 0
+    while b != 1 and b != 2 and b != 3 and b != 4 and b != 5 and b != 6 and b != 7:
+        print ("\nВведите номер операции с числом\n")
+        print ("1. +\n2. -\n3. *\n4. /\n5. Возведение в степень\n6. Вычислить факториал\n7. Вычислить Арккосинус - значение должно быть задано в диапазоне от -1 до 1 \n")
+        b = int(input())
+        y = b
+        if b == 7:   
+            while a > 1 or a < -1:    
+                print ("\nДля вычисления арккосинуса введите число в диапазоне от -1 до 1") 
+                a = float(input())
+            continue
+    c = 0
+    if b != 6 and b!= 7:
+        while c != 1 and c != 2:
+            print ("\nВведите число: 1 - ваше число; 2 - рандомное число (1-100)")
+            c = int(input())
+    
+        
+    if c == 1:
+        print ("\nВведите произвольное число")
+        d = float(input())
+    if c == 2:
+        print ("\nРандомное число от 1 до 100")   
+        d = float(random.randint(1, 100))
+        print (d,"\n")
+        
+    if b == 1:
+        def plus(a, d): return a + d              
+        print ("\n", a,'+',d,'=', plus(a, d))
+
+    if b == 2:
+        def minus(a, d): return a - d   
+        print ("\n", a,'-',d,'=', minus(a, d))
+
+    if b == 3:
+        def mult(a, d): return a * d  
+        print ("\n", a,'*',d,'=', mult(a, d))
+
+    if b == 4:
+        def div(a, d): return a / d  
+        print ("\n", a,'/',d,'=', div(a, d))
+
+    if b == 5:
+        def grade(a, d): return a ** d  
+        print ("\n", a,'^',d,'=', grade(a, d))
+        
+    if b == 6:
+        x = a
+        def factorial(x):
+            fact = 1
+            while x > 1:
+                fact *= x
+                x -= 1
+            return fact
+        print ("\nФакториал",a, "равен", factorial(x))
+        
+    if b == 7:
+        x:float = a
+        def acos(x):
+            x = (math.degrees(math.acos(x)))
+            return x
+        print ("\nАрккосинус",a, "равен", acos(x),"градуса")
+
+    print ("\nХотите завершить?: 0 - Да; \nНачать сначала: любая клавиша + Enter\n")
+    g = int(input())
+    continue
+	
+----------------------	
+Blok 3 - 6b
+
+# и номер 5 на функции.
+
+
+def first(**test): return test
+first = input("Введите список слов через запятую: ").split(",")
+first_set = set(first)
+print("Количество слов:", len(first))
+
+def second(**test): return test
+second = input("Введите второй список с тем же количеством слов через запятую: ").split(",")
+
+dictionary = dict(zip(first_set, second))
+print(dictionary)
+
+
+----------------------	
+Blok 3 - 7
+
+#Сделать из функции калькулятора отдельный класс.
+
+
+import math
+import random
+
+class Calculator():
+    def plus(self, args, other):
+        self.args = args
+        self.other = other
+        return self.args + self.other
+ 
+    def minus(self, args, other):
+        self.args = args
+        self.other = other
+        return args - self.other
+ 
+    def mult(self, args, other):
+        self.args = args
+        self.other = other
+        return args * self.other
+ 
+    def div(self, args, other):
+        self.args = args
+        self.other = other
+        return args / self.other
+    
+    def grade(self, args, other):
+        self.args = args
+        self.other = other
+        return self.args ** self.other
+
+    def factorial(self, args):
+        self.args = args        
+        return math.factorial(self.args)
+
+
+    def arccos(self, args):
+        self.args = args        
+        return math.degrees(math.acos(self.args))
+
+calc = Calculator()
+
+g = 1
+while g != 0:
+    print ("Введите произвольное число")
+    a = float(input())
+    
+    b = 0
+    while b != 1 and b != 2 and b != 3 and b != 4 and b != 5 and b != 6 and b != 7:
+        print ("\nВведите номер операции с числом\n")
+        print ("1. +\n2. -\n3. *\n4. /\n5. Возведение в степень\n6. Вычислить факториал\n7. Вычислить Арккосинус - значение должно быть задано в диапазоне от -1 до 1 \n")
+        b = int(input())
+        y = b
+        if b == 7:   
+            while a > 1 or a < -1:    
+                print ("\nДля вычисления арккосинуса введите число в диапазоне от -1 до 1") 
+                a = float(input())                
+            continue
+    c = 0
+    if b != 6 and b!= 7:
+        while c != 1 and c != 2:
+            print ("\nВведите число: 1 - ваше число; 2 - рандомное число (1-100)")
+            c = int(input())
+    
+        
+    if c == 1:
+        print ("\nВведите произвольное число")
+        d = float(input())
+    if c == 2:
+        print ("\nРандомное число от 1 до 100")   
+        d = float(random.randint(1, 100))
+        print (d,"\n")      
+  
+
+    if b == 1:
+        print ("\n", a,'+',d,'=',(calc.plus(a, d)))
+
+    if b == 2:
+        print ("\n", a,'-',d,'=', calc.minus(a, d))
+
+    if b == 3:
+        print ("\n", a,'*',d,'=', calc.mult(a, d))
+
+    if b == 4:
+        print ("\n", a,'/',d,'=', calc.div(a, d))
+
+    if b == 5:
+        print ("\n", a,'^',d,'=', calc.grade(a, d))
+        
+    if b == 6:
+        d = int(a)
+        print ("\nФакториал",a, "равен", calc.factorial(d))
+        
+    if b == 7:
+        print ("\nАрккосинус",a, "равен", calc.arccos(a),"градуса")
+
+    print ("\nХотите завершить?: 0 - Да; \nНачать сначала: любая клавиша + Enter\n")
+    g = int(input())
+    continue
